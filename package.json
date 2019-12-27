@@ -1,0 +1,69 @@
+{
+  "name": "chrome-extension-typescript-react-starter",
+  "version": "1.0.0",
+  "description": "chrome-extension-typescript-react-starter",
+  "main": "index.js",
+  "scripts": {
+    "start": "run-p -c 'tsc -- --watch' build:dev",
+    "prod": "run-s clean tsc build:prod",
+    "build:dev": "webpack --config webpack/webpack.dev.js --watch",
+    "build:prod": "webpack --config webpack/webpack.prod.js",
+    "clean": "rimraf dist",
+    "tsc": "tsc",
+    "lint": "eslint --ext .ts,.tsx,.js src/*/**"
+  },
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chibat/chrome-extension-typescript-starter.git"
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "dependencies": {
+    "moment": "~2.24.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-react": "^7.7.4",
+    "@babel/preset-typescript": "^7.7.7",
+    "@types/chrome": "0.0.91",
+    "@types/react": "^16.9.17",
+    "@types/react-dom": "^16.9.4",
+    "@typescript-eslint/eslint-plugin": "^1.6.0",
+    "@typescript-eslint/parser": "^1.6.0",
+    "babel-loader": "^8.0.6",
+    "copy-webpack-plugin": "^5.0.5",
+    "css-loader": "^3.4.0",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.17.0",
+    "rimraf": "^3.0.0",
+    "style-loader": "^1.1.2",
+    "stylus": "^0.54.7",
+    "stylus-loader": "^3.0.2",
+    "typescript": "^3.5.3",
+    "webpack": "~4.41.2",
+    "webpack-cli": "~3.3.10",
+    "webpack-merge": "~4.2.2"
+  }
+}

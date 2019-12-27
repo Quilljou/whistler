@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es6",
+        "esModuleInterop": true,
+        "noEmit": true,
+        "strict": true,
+        "sourceMap": true,
+        "jsx": "react",
+        "rootDir": "src",
+        "typeRoots": [ "node_modules/@types" ]
+    }
+}
