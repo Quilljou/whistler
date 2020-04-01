@@ -2,7 +2,7 @@ import axios, { AxiosRequestConfig } from 'axios';
 import { setting } from '../lib/settings';
 
 export async function request<T>(options: AxiosRequestConfig) {
-  const path = `http://${await setting.getIp()}:${await setting.getPort()}`;
+  const path = `http://${await setting.getIp()}:${await setting.getProxyPort()}`;
   return axios
     .request<T>({
       ...options,

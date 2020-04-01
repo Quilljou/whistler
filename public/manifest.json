@@ -1,9 +1,10 @@
 {
   "manifest_version": 2,
 
-  "name": "Chrome Extension TypeScript React Starter",
-  "description": "Chrome Extension, TypeScript, React, Visual Studio Code",
+  "name": "__MSG_extName__",
+  "description": "__MSG_extDescription__",
   "version": "1.0",
+  "default_locale": "en",
 
   "options_ui": {
     "page": "options.html",
@@ -11,7 +12,7 @@
   },
 
   "browser_action": {
-    "default_icon": "icon.png",
+    "default_icon": "whistle.png",
     "default_popup": "popup.html"
   },
 
@@ -29,6 +30,7 @@
   "permissions": [
     "storage",
     "<all_urls>",
-    "tabs"
+    "tabs",
+    "proxy"
   ]
 }

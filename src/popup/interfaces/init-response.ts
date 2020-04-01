@@ -13,6 +13,7 @@ export interface InitResponse {
   rules: {
     defaultRules: string;
     defaultRulesIsDisabled: boolean;
+    allowMultipleChoice: boolean;
     ec: number;
     list: {
       data: string;
@@ -44,3 +45,9 @@ export interface InitResponse {
   };
   version: string;
 }
+
+export type Rules = InitResponse['rules'];
+
+export type RuleItem = Rules['list'][0];
+
+export type Server = InitResponse['server'];

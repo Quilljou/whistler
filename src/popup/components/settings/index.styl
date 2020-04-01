@@ -1,0 +1,50 @@
+@import '../../../stylesheets/variable.styl'
+
+.settings {
+  margin: 10px 16px;
+  background: white;
+  padding: 10px;
+  border-radius: 4px;
+
+  svg {
+    width: 18px;
+    height: 18px;
+    color: w-gray;
+    margin-left: 8px;
+    margin-right: 4px;
+
+    &:hover {
+      color: #333;
+      cursor pointer;
+    }
+  }
+
+  &-section {
+    margin-bottom: 30px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    &-title {
+      font-size: 1.2em;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+  }
+
+  .form-control {
+    border-bottom: 1px solid w-gray-light;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 2px;
+    margin-bottom: 16px;
+
+    label {
+      width: 40px;
+      display: inline-block;
+    }
+  }
+
+}

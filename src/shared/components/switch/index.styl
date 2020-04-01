@@ -1,0 +1,50 @@
+@import "../../../stylesheets/variable.styl";
+
+width = 44
+
+.switch {
+  display: inline-block;
+  width: (width)px;
+  height: (width / 2)px;
+
+  input[type=checkbox]{
+    height: 0;
+    width: 0;
+    display: none;
+  }
+
+
+  label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 100%;
+    height: 100%;
+    background: grey;
+    display: block;
+    border-radius: 100px;
+    position: relative;
+  }
+
+  label:after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: (width / 2 - 6)px;
+    height: (width / 2 - 6)px;
+    background: #fff;
+    border-radius: 90px;
+    transition: 0.3s;
+    box-sizing: border-box;
+    transform: translate3d(0, 0, 0);
+  }
+
+  input:checked + label {
+    background: w-green ;
+  }
+
+  input:checked + label:after {
+    left: calc(100% - 3px);
+    transform: translate3d(-100%, 0, 0);
+  }
+}

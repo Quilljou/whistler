@@ -1,67 +1,78 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
+import { Switch } from '../shared/components/switch/switch';
+import { setting } from '../popup/lib/settings';
+import throttle from 'lodash.throttle';
 
 export default function App() {
-  const [colorValue, setColorValue] = useState('');
-  const [likeValue, setLikeValue] = useState(true);
-  const [status, setStatus] = useState('');
+  const [autoSetting, setAutoSetting] = useState(true);
+  const [ip, setIp] = useState('');
+  const [uiPort, setUIPort] = useState(0);
+  const [proxyPort, setProxyPort] = useState(0);
+
+  const resotoreFromStorage = async () => {
+    setIp(await setting.getIp());
+    setUIPort(await setting.getUIPort());
+    setProxyPort(await setting.getProxyPort());
+    setAutoSetting(await setting.getAutoSorting());
+  };
 
   useEffect(() => {
-    // Restores select box and checkbox state using the preferences
-    // stored in chrome.storage.
-    chrome.storage.sync.get(
-      {
-        favoriteColor: 'red',
-        likesColor: true,
-      },
-      function(items) {
-        setColorValue(items.favoriteColor);
-        setLikeValue(items.likesColor);
-      },
-    );
+    resotoreFromStorage();
   }, []);
 
-  const colorValueChanged = (e: ChangeEvent<HTMLSelectElement>) => {
-    setColorValue(e.target.value);
+  const autoSettingValueChanged = (value: boolean) => {
+    setting.setAutoSorting(value);
+    setAutoSetting(value);
   };
 
-  const likeValueChanged = (e: ChangeEvent<HTMLInputElement>) => {
-    setLikeValue(e.target.checked);
-  };
+  const ipChanged = throttle((e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setting.setIp(value);
+    setIp(value);
+  }, 200);
 
-  // Restores select box and checkbox state using the preferences
-  // stored in chrome.storage.
-  const saveOptions = () => {
-    chrome.storage.sync.set(
-      {
-        favoriteColor: colorValue,
-        likesColor: likeValue,
-      },
-      function() {
-        // Update status to let user know options were saved.
-        setStatus('Options saved.');
-        setTimeout(function() {
-          setStatus('');
-        }, 750);
-      },
-    );
-  };
+  const uiPortChanged = throttle((e: ChangeEvent<HTMLInputElement>) => {
+    const value = +e.target.value;
+    setting.setUIPort(value);
+    setUIPort(value);
+  }, 200);
+
+  const proxyPortChanged = throttle((e: ChangeEvent<HTMLInputElement>) => {
+    const value = +e.target.value;
+    setting.setProxyPort(value);
+    setProxyPort(value);
+  }, 200);
 
   return (
-    <div>
-      Favorite color:
-      <select value={colorValue} onChange={colorValueChanged}>
-        <option value="red">red</option>
-        <option value="green">green</option>
-        <option value="blue">blue</option>
-        <option value="yellow">yellow</option>
-      </select>
-      <label>
-        <input type="checkbox" checked={likeValue} onChange={likeValueChanged} />I like colors.
-      </label>
-      <div id="status">{status}</div>
-      <button id="save" onClick={saveOptions}>
-        Save
-      </button>
+    <div className="options">
+      <h3>Settings</h3>
+      <div className="form-control">
+        <div className="form-label">开启自动排序</div>
+        <div className="form-input">
+          <Switch value={autoSetting} onChange={autoSettingValueChanged} />
+        </div>
+      </div>
+
+      <div className="form-control">
+        <div className="form-label">Host</div>
+        <div className="form-input">
+          <input type="text" value={ip} onChange={ipChanged} />
+        </div>
+      </div>
+
+      <div className="form-control">
+        <div className="form-label">代理端口</div>
+        <div className="form-input">
+          <input type="number" value={proxyPort} onChange={proxyPortChanged} />
+        </div>
+      </div>
+
+      <div className="form-control">
+        <div className="form-label">UI端口</div>
+        <div className="form-input">
+          <input type="number" value={uiPort} onChange={uiPortChanged} />
+        </div>
+      </div>
     </div>
   );
 }

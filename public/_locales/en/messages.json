@@ -1,0 +1,68 @@
+{
+  "extName": {
+    "message": "Whistler"
+  },
+  "extDescription": {
+    "message": "Quick Switch for whistle"
+  },
+  "rulesTabName": {
+    "message": "Rules"
+  },
+  "settingsTabName": {
+    "message": "Settings"
+  },
+  "settingSectionProxy": {
+    "message": "Proxy"
+  },
+  "settingSectionGeneral": {
+    "message": "General"
+  },
+  "settingSectionWhistle": {
+    "message": "Whistle"
+  },
+  "proxyStatusOn": {
+    "message": "Proxy On"
+  },
+  "proxyStatusOff": {
+    "message": "Proxy Off"
+  },
+  "proxyStatusTitleOn": {
+    "message": "Click To Activate Chrome Proxy"
+  },
+  "proxyStatusTitleOff": {
+    "message": "Click To Disactivate Chrome Proxy"
+  },
+  "settingAutoRefresh": {
+    "message": "Auto Refresh"
+  },
+  "settingThemeFollowSystem": {
+    "message": "Theme Follow System"
+  },
+  "settingIpv4": {
+    "message": "IPv4"
+  },
+  "settingDarkMode": {
+    "message": "Dark Mode"
+  },
+  "settingUseMultiple": {
+    "message": "Use Multiple Rules"
+  },
+  "openWhistleTitle": {
+    "message": "Open Whistle Web Debugger"
+  },
+  "whistleHost": {
+    "message": "Whistle Host"
+  },
+  "WhistlePort": {
+    "message": "Whistle Proxy Port"
+  },
+  "WhistleGuiPort": {
+    "message": "Whistle UI Port"
+  },
+  "FreePort": {
+    "message": "Free Port"
+  },
+  "titleClipboard": {
+    "message": "Click To Copy Text"
+  }
+}

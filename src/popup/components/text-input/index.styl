@@ -1,0 +1,32 @@
+@import '../../../stylesheets/variable.styl'
+
+.text-input {
+  display: flex;
+  align-items: flex-end;
+  cursor: pointer;
+  color: #333;
+
+  svg {
+    width: 18px;
+    height: 18px;
+    color: w-gray;
+    margin-left: 8px;
+    margin-right: 4px;
+
+    &:hover {
+      color: #333;
+    }
+  }
+
+  input {
+    border: 1px solid w-gray-light;
+    border-radius: 4px;
+    padding: 3px 6px;
+    text-align: right;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+

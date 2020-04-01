@@ -1,0 +1,43 @@
+@import '../../../stylesheets/variable.styl'
+
+.bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  background-color: #111;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  height: w-bottom-height;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.15);
+  padding: 0 8px;
+
+  &_active {
+    background-color: w-green;
+  }
+
+  .logo {
+    box-sizing: border-box;
+    display: inline-block;
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+    background-image: url("../../../assets/whistle.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: pointer;
+  }
+
+  .proxy-status {
+    display: flex;
+    color: white;
+    align-items: center;
+
+    &-text {
+      margin-left: 5px;
+    }
+  }
+}

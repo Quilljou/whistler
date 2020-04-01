@@ -1,0 +1,40 @@
+@import '../../../stylesheets/variable.styl'
+
+.header {
+  background: none;
+  color: #111;
+
+  &_tabs {
+    // margin: 5px 15px 15px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.15);
+
+    &-item {
+      margin: 5px 15px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 3px;
+      cursor: pointer;
+
+      &:last-of-type {
+        margin-left: 0;
+        border-left: 1px solid #ddd;
+      }
+
+      &__selected {
+        color: w-green;
+      }
+
+      svg {
+        margin-bottom: 4px;
+      }
+    }
+
+  }
+}

@@ -1,0 +1,35 @@
+.rule-list {
+  font-size: 1.2em;
+  box-sizing: border-box;
+
+  &-panel {
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-width: 200px;
+    padding: 10px 16px;
+    max-height: 380px;
+  }
+
+  &-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    text-overflow: ellipsis;
+    padding: 4px 8px;
+    background: #fff
+    cursor: pointer;
+    border-radius: 5px;
+
+    &-title {
+      transition: .3s cubic-bezier(.215, .61, .355, 1), color .3s ease-out;
+    }
+
+    &:hover {
+      .rule-list-item-title {
+        padding-left: 10px;
+      }
+    }
+
+  }
+}

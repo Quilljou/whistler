@@ -4,10 +4,15 @@ import { request } from './request';
 import { InitResponse } from '../interfaces/init-response';
 import { stringify } from 'query-string';
 import { SelectResponse } from '../interfaces/select-response';
+import { SimpleResponse } from '../interfaces/allow-multiple-choice';
 
 const formUrlEncodedHeader = {
   'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
 };
+
+interface ClientParams {
+  clientId: string;
+}
 
 interface ChangeRuleParams {
   clientId: string;
@@ -32,6 +37,7 @@ export class Service {
       method: 'POST',
       headers: formUrlEncodedHeader,
       data: stringify({
+        active: true,
         isDefault: true,
         selected: false,
         clientId,
@@ -59,6 +65,7 @@ export class Service {
       method: 'POST',
       headers: formUrlEncodedHeader,
       data: stringify({
+        active: true,
         selected: false,
         clientId,
         name,
@@ -80,4 +87,18 @@ export class Service {
       }),
     });
   }
+
+  allowMultipleChoice({ clientId, allowMultipleChoice }: { allowMultipleChoice: boolean } & ClientParams) {
+    return request<SimpleResponse>({
+      url: 'cgi-bin/rules/allow-multiple-choice',
+      method: 'POST',
+      headers: formUrlEncodedHeader,
+      data: stringify({
+        allowMultipleChoice: allowMultipleChoice ? 1 : 0,
+        clientId,
+      }),
+    });
+  }
 }
+
+export const service = new Service();
