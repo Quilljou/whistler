@@ -6,16 +6,22 @@ import ClipboardJS from 'clipboard';
 
 interface Props {
   text: string;
+  className?: string;
 }
 
-export const Clipboard: FC<Props> = ({ text }: Props) => {
+export const Clipboard: FC<Props> = ({ text, className }: Props) => {
   useEffect(() => {
-    text && new ClipboardJS('.clipboard');
+    let instatnce: ClipboardJS;
+    if (text) {
+      instatnce = new ClipboardJS('.clipboard');
+    }
+    return () => instatnce && instatnce.destroy();
   }, [text]);
 
   return (
     <span title={i18n('titleClipboard')} className="clipboard" data-clipboard-text={text}>
-      {text} <Icon />
+      <span className={className || ''}>{text} </span>
+      <Icon />
     </span>
   );
 };

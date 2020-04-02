@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
-import { Settings, Link, Camera, Icon, Server } from 'react-feather';
-import { setting } from '../../lib/settings';
+import { Settings, Icon, Server } from 'react-feather';
 import './index.styl';
 
 export type Tabs = 'rules' | 'settings';

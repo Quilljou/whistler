@@ -27,7 +27,7 @@ export class Store {
   @observable public rules: Rules | null = null;
   @observable public isWhistleWorking = false;
   @observable public server: Server | null = null;
-  @observable public currentTab: Tabs = 'settings';
+  @observable public currentTab: Tabs = 'rules';
   clientId: string = '';
 
   @computed

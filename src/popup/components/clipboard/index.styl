@@ -1,4 +1,19 @@
+@import '../../../stylesheets/variable.styl'
+
 .clipboard {
-  display: flex;
+  display: inline-flex;
   align-items: flex-end;
+
+  svg {
+    width: 18px;
+    height: 18px;
+    color: w-gray;
+    margin-left: 8px;
+    margin-right: 4px;
+
+    &:hover {
+      color: #333;
+      cursor pointer;
+    }
+  }
 }

@@ -1,1 +1,86 @@
-{}
+{
+  "extName": {
+    "message": "Whistler"
+  },
+  "extDescription": {
+    "message": "快速切换 Whistle 规则"
+  },
+  "rulesTabName": {
+    "message": "规则"
+  },
+  "settingsTabName": {
+    "message": "设置"
+  },
+  "settingSectionProxy": {
+    "message": "代理"
+  },
+  "settingSectionGeneral": {
+    "message": "通用"
+  },
+  "settingSectionWhistle": {
+    "message": "Whistle"
+  },
+  "proxyStatusOn": {
+    "message": "代理已开启"
+  },
+  "proxyStatusOff": {
+    "message": "代理已关闭"
+  },
+  "proxyStatusTitleOn": {
+    "message": "点击激活 Chrome 代理"
+  },
+  "proxyStatusTitleOff": {
+    "message": "点击关闭 Chrome 代理"
+  },
+  "settingAutoRefresh": {
+    "message": "自动更新"
+  },
+  "settingThemeFollowSystem": {
+    "message": "主题跟随系统"
+  },
+  "settingIpv4": {
+    "message": "IPv4"
+  },
+  "settingDarkMode": {
+    "message": "暗黑模式"
+  },
+  "settingUseMultiple": {
+    "message": "允许规则多选"
+  },
+  "openWhistleTitle": {
+    "message": "打开 Whistle 网页"
+  },
+  "whistleHost": {
+    "message": "Whistle 主机IP"
+  },
+  "WhistlePort": {
+    "message": "Whistle 代理端口"
+  },
+  "WhistleGuiPort": {
+    "message": "Whistle UI端口"
+  },
+  "FreePort": {
+    "message": "GFW 端口"
+  },
+  "titleClipboard": {
+    "message": "点击复制文字"
+  },
+  "connectFailed": {
+    "message": "连接 Whistle 失败"
+  },
+  "whistleStarted": {
+    "message": "已启动 Whistle"
+  },
+  "whistleStoped": {
+    "message": "未启动 Whistle"
+  },
+  "goStart": {
+    "message": "去启动 Whistle"
+  },
+  "trySetting": {
+    "message": "去设置 Whistle 主机 IP 和端口"
+  },
+  "tryRefresh": {
+    "message": "刷新扩展"
+  }
+}

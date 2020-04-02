@@ -60,9 +60,27 @@
     "message": "Whistle UI Port"
   },
   "FreePort": {
-    "message": "Free Port"
+    "message": "GFW Port"
   },
   "titleClipboard": {
     "message": "Click To Copy Text"
+  },
+  "connectFailed": {
+    "message": "Failed To Connect Whistle"
+  },
+  "whistleStarted": {
+    "message": "Whistle Have Already Started"
+  },
+  "whistleStoped": {
+    "message": "Whistle Have Already Stopped"
+  },
+  "goStart": {
+    "message": "Start Whistle"
+  },
+  "trySetting": {
+    "message": "Try To Reset Whistle Host And Port"
+  },
+  "tryRefresh": {
+    "message": "Refresh This Extension"
   }
 }

@@ -32,7 +32,6 @@ export class ChromeProxy {
       mode: 'pac_script',
       pacScript: {
         data: await ChromeProxy.transfromPac(pac),
-        mandatory: true,
       },
     };
 
