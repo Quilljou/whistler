@@ -3,28 +3,27 @@
 
   "name": "__MSG_extName__",
   "description": "__MSG_extDescription__",
-  "version": "1.0",
-  "default_locale": "en",
-
-  "options_ui": {
-    "page": "options.html",
-    "chrome_style": true
-  },
+  "version": "1.0.0",
+  "default_locale": "zh_CN",
 
   "browser_action": {
-    "default_icon": "whistle.png",
+    "default_icon": "logo-off.png",
     "default_popup": "popup.html"
   },
 
-  "content_scripts": [
-      {
-          "matches": ["<all_urls>"],
-          "js": ["js/vendor.js", "js/content_script.js"]
-      }
-  ],
+  "icons": {
+    "16": "logo.png",
+    "48": "logo.png",
+    "128": "logo.png"
+  },
+
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["js/vendor.js", "js/content_script.js"]
+  }],
 
   "background": {
-    "scripts": ["js/vendor.js", "js/background.js"]
+    "scripts": ["js/background.js"]
   },
 
   "permissions": [

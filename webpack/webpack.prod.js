@@ -11,7 +11,7 @@ module.exports = merge(common, {
             // If you want to generate independent css files, uncoment this
             // {
             //   loader: MiniCssExtractPlugin.loader,
-            // }, 
+            // },
             // If you want to generate independent css files, comment this
             'style-loader',
             'css-loader', 'stylus-loader'],

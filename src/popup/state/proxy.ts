@@ -1,6 +1,4 @@
-import { service } from '../network/service';
-import { Rules, RuleItem, Server } from '../interfaces/init-response';
-import { observable, action, computed } from 'mobx';
+import { observable, action } from 'mobx';
 import { chromeProxy } from '../lib/proxy';
 
 class ProxyStore {
@@ -11,10 +9,15 @@ class ProxyStore {
     chromeProxy.getProxyStatus().then(status => {
       if (status === 'controlled_by_this_extension') {
         this.proxyStatus = true;
+        chrome.browserAction.setIcon({
+          path: 'logo.png',
+        });
       } else {
+        chrome.browserAction.setIcon({
+          path: 'logo-off.png',
+        });
         this.proxyStatus = false;
       }
-      console.log(status == 'controlled_by_this_extension');
     });
   }
 

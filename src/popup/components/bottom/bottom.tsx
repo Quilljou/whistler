@@ -25,6 +25,7 @@ const goWhistle = async () => {
           active: true,
         });
       }
+      window.close();
     },
   );
 };

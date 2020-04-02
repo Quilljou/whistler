@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "run-p -c 'tsc -- --watch' build:dev",
-    "prod": "run-s clean tsc build:prod",
+    "prod": "run-s clean tsc build:prod zip",
     "build:dev": "webpack --config webpack/webpack.dev.js --watch",
     "build:prod": "webpack --config webpack/webpack.prod.js",
+    "zip": " zip -r whistler.zip dist",
     "clean": "rimraf dist",
     "tsc": "tsc",
     "lint": "eslint --ext .ts,.tsx,.js src/*/**"
@@ -59,7 +60,7 @@
     "@typescript-eslint/eslint-plugin": "^1.13.0",
     "@typescript-eslint/parser": "^1.13.0",
     "babel-loader": "^8.0.6",
-    "chrome-intl-code-gen": "^1.0.1",
+    "chrome-intl-code-gen": "^1.0.3",
     "copy-webpack-plugin": "^5.0.5",
     "css-loader": "^3.4.0",
     "eslint": "^5.16.0",
