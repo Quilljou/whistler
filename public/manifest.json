@@ -17,11 +17,6 @@
     "128": "logo.png"
   },
 
-  "content_scripts": [{
-    "matches": ["<all_urls>"],
-    "js": ["js/vendor.js", "js/content_script.js"]
-  }],
-
   "background": {
     "scripts": ["js/background.js"]
   },

@@ -3,7 +3,7 @@
     "message": "Whistler"
   },
   "extDescription": {
-    "message": "快速切换 Whistle 规则"
+    "message": "快速切换 Whistle 规则, 一键代理，科学分流"
   },
   "rulesTabName": {
     "message": "规则"
@@ -51,16 +51,16 @@
     "message": "打开 Whistle 网页"
   },
   "whistleHost": {
-    "message": "Whistle 主机IP"
+    "message": "Whistle 主机 IP"
   },
   "WhistlePort": {
     "message": "Whistle 代理端口"
   },
   "WhistleGuiPort": {
-    "message": "Whistle UI端口"
+    "message": "Whistle UI 端口"
   },
   "FreePort": {
-    "message": "GFW 端口"
+    "message": "GFW 流量端口"
   },
   "titleClipboard": {
     "message": "点击复制文字"

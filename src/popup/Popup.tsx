@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Header, Tabs } from './components/header/header';
 import { Bottom } from './components/bottom/bottom';
 import Rules from './components/rules/rules';

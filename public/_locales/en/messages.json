@@ -3,7 +3,7 @@
     "message": "Whistler"
   },
   "extDescription": {
-    "message": "Quick Switch for whistle"
+    "message": "Quick Switch for whistle, Support Proxy and GFW PAC"
   },
   "rulesTabName": {
     "message": "Rules"
