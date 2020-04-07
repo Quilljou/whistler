@@ -1,5 +1,12 @@
 import { observable, action } from 'mobx';
 import { chromeProxy } from '../lib/proxy';
+import { setting } from '../lib/settings';
+
+async function reloadTab() {
+  if (await setting.getAutoRefresh()) {
+    chrome.tabs.reload();
+  }
+}
 
 class ProxyStore {
   @observable public proxyStatus: boolean = false;
@@ -26,10 +33,12 @@ class ProxyStore {
     if (!this.proxyStatus) {
       chromeProxy.setProxy(() => {
         this.refreshProxyStatus();
+        reloadTab();
       });
     } else {
       chromeProxy.stopProxy();
       this.refreshProxyStatus();
+      reloadTab();
     }
   }
 
@@ -38,6 +47,7 @@ class ProxyStore {
     chromeProxy.stopProxy();
     chromeProxy.setProxy(() => {
       this.refreshProxyStatus();
+      reloadTab();
     });
   }
 }

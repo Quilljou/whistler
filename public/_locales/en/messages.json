@@ -59,6 +59,9 @@
   "WhistleGuiPort": {
     "message": "Whistle UI Port"
   },
+  "pacMode": {
+    "message": "Auto Mode By PAC"
+  },
   "FreePort": {
     "message": "GFW Port"
   },

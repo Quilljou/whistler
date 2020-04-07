@@ -15,6 +15,8 @@ export default observer(() => {
   const [ip, setIp] = useState('');
   const [uiPort, setUIPort] = useState(0);
   const [proxyPort, setProxyPort] = useState(0);
+
+  const [pacMode, setPacMode] = useState(true);
   const [freePort, setFreePort] = useState(0);
 
   const resotoreFromStorage = async () => {
@@ -23,6 +25,8 @@ export default observer(() => {
     setIp(await setting.getIp());
     setUIPort(await setting.getUIPort());
     setProxyPort(await setting.getProxyPort());
+
+    setPacMode(await setting.getProxyGFW());
     setFreePort(await setting.getFreePort());
   };
 
@@ -56,6 +60,12 @@ export default observer(() => {
     setProxyPort(+value);
     store.switchTabs('rules');
     store.getRules();
+  };
+
+  const pacModeValueChanged = (value: boolean) => {
+    setting.setProxyGFW(value);
+    setPacMode(value);
+    proxyStore.reConnectProxy();
   };
 
   const freePortChanged = (value: string) => {
@@ -120,11 +130,20 @@ export default observer(() => {
         </div>
 
         <div className="form-control">
-          <div className="form-label">{i18n('FreePort')}</div>
+          <div className="form-label">{i18n('pacMode')}</div>
           <div className="form-input">
-            <TextInput value={String(freePort)} onSave={freePortChanged} />
+            <Switch value={pacMode} onChange={pacModeValueChanged} />
           </div>
         </div>
+
+        {pacMode && (
+          <div className="form-control">
+            <div className="form-label">{i18n('FreePort')}</div>
+            <div className="form-input">
+              <TextInput value={String(freePort)} onSave={freePortChanged} />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -59,8 +59,11 @@
   "WhistleGuiPort": {
     "message": "Whistle UI 端口"
   },
+  "pacMode": {
+    "message": "PAC自动分流"
+  },
   "FreePort": {
-    "message": "GFW 流量端口"
+    "message": "科学上网流量端口"
   },
   "titleClipboard": {
     "message": "点击复制文字"

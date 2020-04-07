@@ -28,12 +28,26 @@ export class ChromeProxy {
   }
 
   async setProxy(cb?: Function) {
-    const config: chrome.proxy.ProxyConfig = {
-      mode: 'pac_script',
-      pacScript: {
-        data: await ChromeProxy.transfromPac(pac),
-      },
-    };
+    const proxyGfw = await setting.getProxyGFW();
+    const whistleIP = await setting.getIp();
+    const ChromeProxyPort = await setting.getProxyPort();
+
+    const config: chrome.proxy.ProxyConfig = proxyGfw
+      ? {
+          mode: 'pac_script',
+          pacScript: {
+            data: await ChromeProxy.transfromPac(pac),
+          },
+        }
+      : {
+          mode: 'fixed_servers',
+          rules: {
+            singleProxy: {
+              host: whistleIP,
+              port: ChromeProxyPort,
+            },
+          },
+        };
 
     chrome.proxy.settings.set(
       {

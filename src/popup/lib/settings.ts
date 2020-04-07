@@ -6,7 +6,7 @@ const AutoSortingKey = 'autosorting';
 const FreeIpKey = 'freeIp';
 const FreePortKey = 'freePort';
 const AutoRefreshKey = 'autoRefresh';
-
+const ProxyGFWKey = 'ProxyGFW';
 class SettingController {
   getAutoSorting() {
     return UserDefaults.get(AutoSortingKey, true);
@@ -62,6 +62,14 @@ class SettingController {
 
   setAutoRefresh(val: boolean) {
     UserDefaults.set(AutoRefreshKey, val);
+  }
+
+  getProxyGFW() {
+    return UserDefaults.get(ProxyGFWKey, true);
+  }
+
+  setProxyGFW(val: boolean) {
+    UserDefaults.set(ProxyGFWKey, val);
   }
 }
 
