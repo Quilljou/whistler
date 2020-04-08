@@ -39,6 +39,13 @@ export const TextInput: FC<Props> = (props: Props) => {
     setEditText(e.target.value);
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    var keycode = event.keyCode ? event.keyCode : event.which;
+    if (keycode == 13) {
+      handleBlur();
+    }
+  };
+
   const changeEditing = () => {
     setIsEditing(true);
   };
@@ -51,7 +58,14 @@ export const TextInput: FC<Props> = (props: Props) => {
   );
 
   const renderInput = () => (
-    <input ref={inputRef} type={type} value={editText} onBlur={handleBlur} onChange={handleChange}></input>
+    <input
+      ref={inputRef}
+      type={type}
+      value={editText}
+      onBlur={handleBlur}
+      onChange={handleChange}
+      onKeyDown={handleKeyDown}
+    ></input>
   );
 
   return <div className="text-input">{isEditing ? renderInput() : renderText()}</div>;

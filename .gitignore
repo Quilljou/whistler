@@ -144,3 +144,5 @@ dist/
 tmp/
 
 *.zip
+*.crx
+*.pem

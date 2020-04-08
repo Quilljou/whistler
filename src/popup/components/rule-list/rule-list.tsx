@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import { InitResponse } from '../../interfaces/init-response';
 import { Switch } from '../../../shared/components/switch/switch';
 import './index.styl';

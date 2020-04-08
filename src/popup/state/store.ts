@@ -26,6 +26,7 @@ import { Tabs } from '../components/header/header';
 export class Store {
   @observable public rules: Rules | null = null;
   @observable public isWhistleWorking = false;
+  @observable public isLoading = true;
   @observable public server: Server | null = null;
   @observable public currentTab: Tabs = 'rules';
   clientId: string = '';
@@ -39,6 +40,7 @@ export class Store {
   @action
   async getRules() {
     try {
+      this.isLoading = true;
       const response = await service.init();
 
       this.rules = response.data.rules;
@@ -48,6 +50,8 @@ export class Store {
       this.isWhistleWorking = true;
     } catch (error) {
       this.isWhistleWorking = false;
+    } finally {
+      this.isLoading = false;
     }
   }
 
