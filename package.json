@@ -1,6 +1,6 @@
 {
   "name": "chrome-extension-typescript-react-starter",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "chrome-extension-typescript-react-starter",
   "main": "index.js",
   "scripts": {
