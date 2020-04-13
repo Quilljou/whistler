@@ -1,7 +1,7 @@
 {
-  "name": "chrome-extension-typescript-react-starter",
+  "name": "whistler",
   "version": "1.0.2",
-  "description": "chrome-extension-typescript-react-starter",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "run-p -c 'tsc -- --watch' build:dev",
@@ -9,7 +9,7 @@
     "build:dev": "webpack --config webpack/webpack.dev.js --watch",
     "build:prod": "webpack --config webpack/webpack.prod.js",
     "pack": "run-s crx zip",
-    "zip": "crx pack dist -o dist.crx",
+    "zip": "crx pack dist -o whistler.crx",
     "crx": "crx pack dist --zip-output dist.zip",
     "clean": "rimraf dist",
     "tsc": "tsc",
@@ -19,7 +19,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/chibat/chrome-extension-typescript-starter.git"
+    "url": "https://github.com/Quilljou/whistler"
   },
   "lint-staged": {
     "**/*.{ts,tsx,js,jsx}": [

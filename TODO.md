@@ -1,6 +1,5 @@
-- [ ] i18n
+- [x] i18n
 - [ ] Dark mode
-- [ ] Settings
-  - [ ] Auto Sorting
-- [ ] Proxy
+- [x] Settings
+- [x] Proxy
 - [ ] Animation & Transtion

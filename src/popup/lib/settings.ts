@@ -32,13 +32,13 @@ class SettingController {
     return UserDefaults.get(ProxyPortKey, 8899);
   }
 
-  setUIPort(val: number) {
-    UserDefaults.set(UIPortKey, val);
-  }
+  // setUIPort(val: number) {
+  //   UserDefaults.set(UIPortKey, val);
+  // }
 
-  getUIPort() {
-    return UserDefaults.get(UIPortKey, 8899);
-  }
+  // getUIPort() {
+  //   return UserDefaults.get(UIPortKey, 8899);
+  // }
 
   getFreeIp() {
     return UserDefaults.get(FreeIpKey, '127.0.0.1');

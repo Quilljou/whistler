@@ -13,7 +13,7 @@ export default observer(() => {
   const { isAllowMultiChoice } = store;
   const [autoRefresh, setAutoRefresh] = useState(true);
   const [ip, setIp] = useState('');
-  const [uiPort, setUIPort] = useState(0);
+  // const [uiPort, setUIPort] = useState(0);
   const [proxyPort, setProxyPort] = useState(0);
 
   const [pacMode, setPacMode] = useState(true);
@@ -23,7 +23,7 @@ export default observer(() => {
     setAutoRefresh(await setting.getAutoRefresh());
 
     setIp(await setting.getIp());
-    setUIPort(await setting.getUIPort());
+    // setUIPort(await setting.getUIPort());
     setProxyPort(await setting.getProxyPort());
 
     setPacMode(await setting.getProxyGFW());
@@ -48,18 +48,20 @@ export default observer(() => {
     setIp(value);
     store.switchTabs('rules');
     store.getRules();
+    proxyStore.reConnectProxy();
   };
 
-  const uiPortChanged = (value: string) => {
-    setting.setUIPort(+value);
-    setUIPort(+value);
-  };
+  // const uiPortChanged = (value: string) => {
+  //   setting.setUIPort(+value);
+  //   setUIPort(+value);
+  // };
 
   const proxyPortChanged = (value: string) => {
     setting.setProxyPort(+value);
     setProxyPort(+value);
     store.switchTabs('rules');
     store.getRules();
+    proxyStore.reConnectProxy();
   };
 
   const pacModeValueChanged = (value: boolean) => {
@@ -122,12 +124,12 @@ export default observer(() => {
           </div>
         </div>
 
-        <div className="form-control">
+        {/* <div className="form-control">
           <div className="form-label">{i18n('WhistleGuiPort')}</div>
           <div className="form-input">
             <TextInput value={String(uiPort)} onSave={uiPortChanged} />
           </div>
-        </div>
+        </div> */}
 
         <div className="form-control">
           <div className="form-label">{i18n('pacMode')}</div>

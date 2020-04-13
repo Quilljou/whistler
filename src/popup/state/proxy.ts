@@ -44,11 +44,14 @@ class ProxyStore {
 
   @action
   reConnectProxy() {
-    chromeProxy.stopProxy();
-    chromeProxy.setProxy(() => {
-      this.refreshProxyStatus();
-      reloadTab();
-    });
+    // reconnect when proxy on
+    if (this.proxyStatus) {
+      chromeProxy.stopProxy();
+      chromeProxy.setProxy(() => {
+        this.refreshProxyStatus();
+        reloadTab();
+      });
+    }
   }
 }
 

@@ -9,3 +9,10 @@ Whistler 是用于快速切换 Whistle 规则的 Chrome 扩展，且支持一键
 ## 安装使用
 
 [Chrome web store](https://chrome.google.com/webstore/detail/whistler/jkohblcpemjicbcaicciplcddbfiajkf)
+
+
+## Features
+
+- 支持代理
+- 支持PAC
+- i18n(zh_CN,en)

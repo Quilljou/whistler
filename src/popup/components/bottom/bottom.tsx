@@ -8,7 +8,7 @@ import { useStore } from '../../state/context';
 import { observer } from 'mobx-react-lite';
 
 const goWhistle = async () => {
-  const url = `http://${await setting.getIp()}:${await setting.getUIPort()}`;
+  const url = `http://${await setting.getIp()}:${await setting.getProxyPort()}`;
   chrome.tabs.query(
     {
       title: 'Whistle Web Debugger',
