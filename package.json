@@ -9,9 +9,9 @@
     "build:dev": "webpack --config webpack/webpack.dev.js --watch",
     "build:prod": "webpack --config webpack/webpack.prod.js",
     "pack": "run-s crx zip",
-    "zip": "crx pack dist -o whistler.crx",
-    "crx": "crx pack dist --zip-output dist.zip",
-    "clean": "rimraf dist",
+    "zip": "crx pack dest -o dist/whistler.crx",
+    "crx": "crx pack dest --zip-output dist/whistler.zip",
+    "clean": "rimraf dest dist && mkdir dist",
     "tsc": "tsc",
     "lint": "eslint --ext .ts,.tsx,.js src/*/**"
   },

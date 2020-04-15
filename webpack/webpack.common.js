@@ -13,7 +13,7 @@ module.exports = {
     content_script: path.join(__dirname, srcDir + 'content_script.ts')
   },
   output: {
-    path: path.join(__dirname, '../dist'),
+    path: path.join(__dirname, '../dest'),
     filename: 'js/[name].js'
   },
   optimization: {
@@ -49,7 +49,7 @@ module.exports = {
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new CopyPlugin([{
       from: '.',
-      to: '../dist'
+      to: '../dest'
     }], {
       context: 'public'
     }),
