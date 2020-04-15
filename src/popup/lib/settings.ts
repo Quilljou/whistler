@@ -1,13 +1,35 @@
-import { UserDefaults } from './user-defaults';
+import { UserDefaults, LocalUserDefaults } from './user-defaults';
+import { ProxyMode } from './proxy-mode';
 const IpKey = 'ip';
 const ProxyPortKey = 'proxyPort';
-const UIPortKey = 'uiPortKey';
 const AutoSortingKey = 'autosorting';
 const FreeIpKey = 'freeIp';
 const FreePortKey = 'freePort';
 const AutoRefreshKey = 'autoRefresh';
-const ProxyGFWKey = 'ProxyGFW';
+const ProxyModeKey = 'ProxyMode';
+const PacScriptKey = 'PacScript';
+
 class SettingController {
+  proxyMode = {
+    get() {
+      return UserDefaults.get(ProxyModeKey, ProxyMode.Fixed);
+    },
+
+    set(val: ProxyMode) {
+      UserDefaults.set(ProxyModeKey, val);
+    },
+  };
+
+  pacScript = {
+    get() {
+      return LocalUserDefaults.get(PacScriptKey, '');
+    },
+
+    set(val: string) {
+      LocalUserDefaults.set(PacScriptKey, val);
+    },
+  };
+
   getAutoSorting() {
     return UserDefaults.get(AutoSortingKey, true);
   }
@@ -32,14 +54,6 @@ class SettingController {
     return UserDefaults.get(ProxyPortKey, 8899);
   }
 
-  // setUIPort(val: number) {
-  //   UserDefaults.set(UIPortKey, val);
-  // }
-
-  // getUIPort() {
-  //   return UserDefaults.get(UIPortKey, 8899);
-  // }
-
   getFreeIp() {
     return UserDefaults.get(FreeIpKey, '127.0.0.1');
   }
@@ -62,14 +76,6 @@ class SettingController {
 
   setAutoRefresh(val: boolean) {
     UserDefaults.set(AutoRefreshKey, val);
-  }
-
-  getProxyGFW() {
-    return UserDefaults.get(ProxyGFWKey, true);
-  }
-
-  setProxyGFW(val: boolean) {
-    UserDefaults.set(ProxyGFWKey, val);
   }
 }
 

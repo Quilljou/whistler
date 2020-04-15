@@ -3,7 +3,7 @@
     "message": "Whistler"
   },
   "extDescription": {
-    "message": "Quick Switch for whistle, Support Proxy and GFW PAC"
+    "message": "Quick Switch for whistle, Support Proxy"
   },
   "rulesTabName": {
     "message": "Rules"
@@ -59,8 +59,26 @@
   "WhistleGuiPort": {
     "message": "Whistle UI Port"
   },
-  "pacMode": {
-    "message": "Auto Mode By PAC"
+  "proxyMode": {
+    "message": "Proxy Mode"
+  },
+  "Fixed": {
+    "message": "Proxy to Whistle"
+  },
+  "FixedTitle": {
+    "message": "All network traffic proxy to whistle"
+  },
+  "BuiltInPac": {
+    "message": "Proxy to Whistle with Gfwlist.Pac"
+  },
+  "BuiltInPacTitle": {
+    "message": "Some proxy to Whistle, Others proxy to GFW server"
+  },
+  "CustomPac": {
+    "message": "Custom Pac"
+  },
+  "CustomPacTitle": {
+    "message": "Custom Pac Script"
   },
   "FreePort": {
     "message": "GFW Port"

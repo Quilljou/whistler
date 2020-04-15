@@ -1,5 +1,6 @@
 import pac from '../../assets/proxy.pac';
 import { setting } from './settings';
+import { ProxyMode } from './proxy-mode';
 
 export class ChromeProxy {
   static async transfromPac(pac: string) {
@@ -13,12 +14,6 @@ export class ChromeProxy {
     return ret;
   }
 
-  constructor() {
-    chrome.proxy.onProxyError.addListener(function(d) {
-      console.log(d);
-    });
-  }
-
   getProxyStatus() {
     return new Promise<string>(function(resolve) {
       chrome.proxy.settings.get({ incognito: false }, details => {
@@ -28,30 +23,42 @@ export class ChromeProxy {
   }
 
   async setProxy(cb?: Function) {
-    const proxyGfw = await setting.getProxyGFW();
+    const proxyMode = await setting.proxyMode.get();
     const whistleIP = await setting.getIp();
     const ChromeProxyPort = await setting.getProxyPort();
 
-    const config: chrome.proxy.ProxyConfig = proxyGfw
-      ? {
-          mode: 'pac_script',
-          pacScript: {
-            data: await ChromeProxy.transfromPac(pac),
+    let config: chrome.proxy.ProxyConfig;
+
+    if (proxyMode === ProxyMode.BuiltInPac) {
+      config = {
+        mode: 'pac_script',
+        pacScript: {
+          data: await ChromeProxy.transfromPac(pac),
+        },
+      };
+    } else if (proxyMode === ProxyMode.Fixed) {
+      config = {
+        mode: 'fixed_servers',
+        rules: {
+          singleProxy: {
+            host: whistleIP,
+            port: ChromeProxyPort,
           },
-        }
-      : {
-          mode: 'fixed_servers',
-          rules: {
-            singleProxy: {
-              host: whistleIP,
-              port: ChromeProxyPort,
-            },
-          },
-        };
+        },
+      };
+    } else if (proxyMode === ProxyMode.CustomPac) {
+      const pacScirpt = await setting.pacScript.get();
+      config = {
+        mode: 'pac_script',
+        pacScript: {
+          data: pacScirpt,
+        },
+      };
+    }
 
     chrome.proxy.settings.set(
       {
-        value: config,
+        value: config!,
       },
       cb,
     );

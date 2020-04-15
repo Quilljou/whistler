@@ -7,27 +7,32 @@ import { TextInput } from '../text-input/text-input';
 import { useStore } from '../../state/context';
 import { observer } from 'mobx-react-lite';
 import { Clipboard } from '../clipboard/clipboard';
+import { ProxyMode } from '../../lib/proxy-mode';
+import { TextArea } from '../textarea/text-area';
+import { HelpCircle } from 'react-feather';
 
 export default observer(() => {
   const { store, proxyStore } = useStore();
   const { isAllowMultiChoice } = store;
   const [autoRefresh, setAutoRefresh] = useState(true);
   const [ip, setIp] = useState('');
-  // const [uiPort, setUIPort] = useState(0);
+  const [proxyMode, setProxyMode] = useState(ProxyMode.Fixed);
   const [proxyPort, setProxyPort] = useState(0);
-
-  const [pacMode, setPacMode] = useState(true);
   const [freePort, setFreePort] = useState(0);
+  const [pacScript, setPacScript] = useState('');
 
   const resotoreFromStorage = async () => {
     setAutoRefresh(await setting.getAutoRefresh());
 
     setIp(await setting.getIp());
-    // setUIPort(await setting.getUIPort());
     setProxyPort(await setting.getProxyPort());
-
-    setPacMode(await setting.getProxyGFW());
     setFreePort(await setting.getFreePort());
+    setPacScript(await setting.pacScript.get());
+
+    // incase flash too fast
+    setTimeout(async () => {
+      setProxyMode(await setting.proxyMode.get());
+    }, 200);
   };
 
   useEffect(() => {
@@ -51,10 +56,12 @@ export default observer(() => {
     proxyStore.reConnectProxy();
   };
 
-  // const uiPortChanged = (value: string) => {
-  //   setting.setUIPort(+value);
-  //   setUIPort(+value);
-  // };
+  const proxyModeChanged = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = event.target.value as ProxyMode;
+    setting.proxyMode.set(value);
+    setProxyMode(value);
+    proxyStore.reConnectProxy();
+  };
 
   const proxyPortChanged = (value: string) => {
     setting.setProxyPort(+value);
@@ -64,17 +71,24 @@ export default observer(() => {
     proxyStore.reConnectProxy();
   };
 
-  const pacModeValueChanged = (value: boolean) => {
-    setting.setProxyGFW(value);
-    setPacMode(value);
-    proxyStore.reConnectProxy();
-  };
-
   const freePortChanged = (value: string) => {
     setting.setFreePort(+value);
     setFreePort(+value);
     proxyStore.reConnectProxy();
   };
+
+  const pacScriptChanged = (value: string) => {
+    setting.pacScript.set(value);
+    setPacScript(value);
+    proxyStore.reConnectProxy();
+  };
+
+  const openPacHelp = () => {
+    window.open(
+      'https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Proxy_servers_and_tunneling/Proxy_Auto-Configuration_(PAC)_file',
+    );
+  };
+
   return (
     <div className="settings">
       <div className="settings-section">
@@ -124,25 +138,37 @@ export default observer(() => {
           </div>
         </div>
 
-        {/* <div className="form-control">
-          <div className="form-label">{i18n('WhistleGuiPort')}</div>
-          <div className="form-input">
-            <TextInput value={String(uiPort)} onSave={uiPortChanged} />
-          </div>
-        </div> */}
-
         <div className="form-control">
-          <div className="form-label">{i18n('pacMode')}</div>
+          <div className="form-label">{i18n('proxyMode')}</div>
           <div className="form-input">
-            <Switch value={pacMode} onChange={pacModeValueChanged} />
+            <select value={proxyMode} onChange={proxyModeChanged}>
+              {Object.values(ProxyMode).map(item => (
+                <option value={item} key={item} title={i18n((item + 'Title') as any)}>
+                  {i18n(item)}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
 
-        {pacMode && (
+        {proxyMode == ProxyMode.BuiltInPac && (
           <div className="form-control">
             <div className="form-label">{i18n('FreePort')}</div>
             <div className="form-input">
               <TextInput value={String(freePort)} onSave={freePortChanged} />
+            </div>
+          </div>
+        )}
+
+        {proxyMode == ProxyMode.CustomPac && (
+          <div className="form-control form-control-block">
+            <div className="form-label">
+              {i18n('CustomPac')}
+              <HelpCircle onClick={openPacHelp}></HelpCircle>
+            </div>
+            {proxyStore.proxyErrorMessage && <div className="proxy-error">{proxyStore.proxyErrorMessage}</div>}
+            <div className="form-textarea">
+              <TextArea value={pacScript} onSave={pacScriptChanged}></TextArea>
             </div>
           </div>
         )}

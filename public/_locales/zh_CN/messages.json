@@ -3,7 +3,7 @@
     "message": "Whistler"
   },
   "extDescription": {
-    "message": "快速切换 Whistle 规则, 一键代理，科学分流"
+    "message": "快速切换 Whistle 规则, 一键代理"
   },
   "rulesTabName": {
     "message": "规则"
@@ -63,7 +63,7 @@
     "message": "PAC自动分流"
   },
   "FreePort": {
-    "message": "科学上网流量端口"
+    "message": "科学上网代理服务器端口"
   },
   "titleClipboard": {
     "message": "点击复制文字"
@@ -72,10 +72,31 @@
     "message": "连接 Whistle 失败"
   },
   "whistleStarted": {
-    "message": "已启动 Whistle"
+    "message": "如果已启动 Whistle"
   },
   "whistleStoped": {
-    "message": "未启动 Whistle"
+    "message": "如果未启动 Whistle"
+  },
+  "proxyMode": {
+    "message": "Chrome 代理模式"
+  },
+  "Fixed": {
+    "message": "Whistle 模式"
+  },
+  "FixedTitle": {
+    "message": "全部流量代理到 Whistle"
+  },
+  "BuiltInPac": {
+    "message": "科学上网模式"
+  },
+  "BuiltInPacTitle": {
+    "message": "代理到 Whistle，科学上网流量分流到代理服务器"
+  },
+  "CustomPac": {
+    "message": "自定义 Pac 脚本"
+  },
+  "CustomPacTitle": {
+    "message": "自定义 Pac 脚本"
   },
   "goStart": {
     "message": "去启动 Whistle"

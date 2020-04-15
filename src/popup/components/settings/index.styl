@@ -41,10 +41,29 @@
     padding-bottom: 2px;
     margin-bottom: 16px;
 
-    label {
-      width: 40px;
-      display: inline-block;
+    &:last-of-type {
+      margin-bottom: 0;
     }
+
+    &-block {
+      display: block;
+      border-bottom: none;
+    }
+
+    .form-label {
+      display: flex;
+      align-items: center;
+
+      svg {
+        width: 14px;
+        height: 14px;
+      }
+    }
+  }
+  .proxy-error {
+    color: red;
+    font-size: 12px;
+    margin: 0;
   }
 
 }

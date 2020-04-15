@@ -10,10 +10,23 @@ async function reloadTab() {
 
 class ProxyStore {
   @observable public proxyStatus: boolean = false;
+  @observable public proxyErrorMessage: string = '';
+
+  constructor() {
+    chrome.proxy.onProxyError.addListener(e => {
+      console.error(e);
+      chromeProxy.stopProxy();
+      this.refreshProxyStatus().then(() => {
+        this.proxyErrorMessage = e.details || 'Proxy Error';
+      });
+      reloadTab();
+    });
+  }
 
   @action
   refreshProxyStatus() {
-    chromeProxy.getProxyStatus().then(status => {
+    this.proxyErrorMessage = '';
+    return chromeProxy.getProxyStatus().then(status => {
       if (status === 'controlled_by_this_extension') {
         this.proxyStatus = true;
         chrome.browserAction.setIcon({
