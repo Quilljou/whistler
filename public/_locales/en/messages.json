@@ -83,6 +83,9 @@
   "FreePort": {
     "message": "GFW Port"
   },
+  "FreePortTitle": {
+    "message": "Use for setting proxy port of local proxy app(like shadowsocks, clash)"
+  },
   "titleClipboard": {
     "message": "Click To Copy Text"
   },

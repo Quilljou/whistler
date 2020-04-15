@@ -63,7 +63,7 @@ class SettingController {
   }
 
   getFreePort() {
-    return UserDefaults.get(FreePortKey, 1087);
+    return UserDefaults.get(FreePortKey, 1080);
   }
 
   setFreePort(val: number) {

@@ -153,7 +153,12 @@ export default observer(() => {
 
         {proxyMode == ProxyMode.BuiltInPac && (
           <div className="form-control">
-            <div className="form-label">{i18n('FreePort')}</div>
+            <div className="form-label">
+              {i18n('FreePort')}
+              <span title={i18n('FreePortTitle')}>
+                <HelpCircle></HelpCircle>
+              </span>
+            </div>
             <div className="form-input">
               <TextInput value={String(freePort)} onSave={freePortChanged} />
             </div>
@@ -168,7 +173,11 @@ export default observer(() => {
             </div>
             {proxyStore.proxyErrorMessage && <div className="proxy-error">{proxyStore.proxyErrorMessage}</div>}
             <div className="form-textarea">
-              <TextArea value={pacScript} onSave={pacScriptChanged}></TextArea>
+              <TextArea
+                value={pacScript}
+                onSave={pacScriptChanged}
+                onBlur={() => (proxyStore.proxyErrorMessage = '')}
+              ></TextArea>
             </div>
           </div>
         )}

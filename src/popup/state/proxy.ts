@@ -25,7 +25,6 @@ class ProxyStore {
 
   @action
   refreshProxyStatus() {
-    this.proxyErrorMessage = '';
     return chromeProxy.getProxyStatus().then(status => {
       if (status === 'controlled_by_this_extension') {
         this.proxyStatus = true;

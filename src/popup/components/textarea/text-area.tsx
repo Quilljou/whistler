@@ -3,11 +3,12 @@ import './index.styl';
 
 interface Props {
   value: string;
-  onSave: (value: string) => any;
+  onSave(value: string): any;
+  onBlur?(): any;
 }
 
 export const TextArea: FC<Props> = (props: Props) => {
-  const { value, onSave } = props;
+  const { value, onSave, onBlur } = props;
   const [editText, setEditText] = useState('');
 
   useEffect(() => {
@@ -20,6 +21,7 @@ export const TextArea: FC<Props> = (props: Props) => {
     } else {
       setEditText(value);
     }
+    onBlur && onBlur();
   };
 
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {

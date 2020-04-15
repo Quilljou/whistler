@@ -63,7 +63,10 @@
     "message": "PAC自动分流"
   },
   "FreePort": {
-    "message": "科学上网代理服务器端口"
+    "message": "科学上网代理端口"
+  },
+  "FreePortTitle": {
+    "message": "用于设置本地翻墙应用(ss、clash)的代理端口"
   },
   "titleClipboard": {
     "message": "点击复制文字"
