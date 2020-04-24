@@ -3,25 +3,7 @@ import { Rules, RuleItem, Server } from '../interfaces/init-response';
 import { observable, action, computed } from 'mobx';
 import { setting } from '../lib/settings';
 import { Tabs } from '../components/header/header';
-
-// generic is the function of type definition
-
-// const transformRules = async (rule: Rules) => {
-//   // const needAutoSorting = await setting.getAutoSorting();
-//   // setRules(rule);
-//   //   return;
-//   // const selected: ListItem[] = [];
-//   // const unSelected: ListItem[] = [];
-//   // rule.list!.forEach(item => {
-//   //   if (item.selected) {
-//   //     selected.push(item);
-//   //   } else {
-//   //     unSelected.push(item);
-//   //   }
-//   // });
-//   // rule.list = selected.concat(unSelected);
-//   // setRules(rule);
-// };]
+import { transformRules, addSortKeyRank } from '../lib/auto-sorting';
 
 export class Store {
   @observable public rules: Rules | null = null;
@@ -43,7 +25,8 @@ export class Store {
       this.isLoading = true;
       const response = await service.init();
 
-      this.rules = response.data.rules;
+      this.rules = await transformRules(response.data.rules);
+
       this.clientId = response.data.clientId;
       this.server = response.data.server;
 
@@ -69,6 +52,9 @@ export class Store {
         action = service.unselect;
       } else {
         action = service.select;
+
+        // rank it
+        addSortKeyRank(item.name);
       }
     }
     // Start Request

@@ -35,6 +35,9 @@
   "settingAutoRefresh": {
     "message": "Auto Refresh"
   },
+  "settingAutoSorting": {
+    "message": "Auto Sorting"
+  },
   "settingThemeFollowSystem": {
     "message": "Theme Follow System"
   },

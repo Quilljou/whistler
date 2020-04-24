@@ -14,6 +14,7 @@ import { HelpCircle } from 'react-feather';
 export default observer(() => {
   const { store, proxyStore } = useStore();
   const { isAllowMultiChoice } = store;
+  const [autoSorting, setAutoSorting] = useState(true);
   const [autoRefresh, setAutoRefresh] = useState(true);
   const [ip, setIp] = useState('');
   const [proxyMode, setProxyMode] = useState(ProxyMode.Fixed);
@@ -23,6 +24,7 @@ export default observer(() => {
 
   const resotoreFromStorage = async () => {
     setAutoRefresh(await setting.getAutoRefresh());
+    setAutoSorting(await setting.getAutoSorting());
 
     setIp(await setting.getIp());
     setProxyPort(await setting.getProxyPort());
@@ -42,6 +44,11 @@ export default observer(() => {
   const autoFreshValueChanged = (value: boolean) => {
     setting.setAutoRefresh(value);
     setAutoRefresh(value);
+  };
+
+  const autoSortingValueChanged = (value: boolean) => {
+    setting.setAutoSorting(value);
+    setAutoSorting(value);
   };
 
   const useMultipleValueChanged = (value: boolean) => {
@@ -98,6 +105,13 @@ export default observer(() => {
           <div className="form-label">{i18n('settingAutoRefresh')}</div>
           <div className="form-input">
             <Switch value={autoRefresh} onChange={autoFreshValueChanged} />
+          </div>
+        </div>
+
+        <div className="form-control">
+          <div className="form-label">{i18n('settingAutoSorting')}</div>
+          <div className="form-input">
+            <Switch value={autoSorting} onChange={autoSortingValueChanged} />
           </div>
         </div>
 

@@ -1,5 +1,7 @@
 import { UserDefaults, LocalUserDefaults } from './user-defaults';
 import { ProxyMode } from './proxy-mode';
+import pac from '../../assets/proxy.pac';
+
 const IpKey = 'ip';
 const ProxyPortKey = 'proxyPort';
 const AutoSortingKey = 'autosorting';
@@ -22,7 +24,7 @@ class SettingController {
 
   pacScript = {
     get() {
-      return LocalUserDefaults.get(PacScriptKey, '');
+      return LocalUserDefaults.get(PacScriptKey, pac);
     },
 
     set(val: string) {
