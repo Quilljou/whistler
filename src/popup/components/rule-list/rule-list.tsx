@@ -12,14 +12,18 @@ export const RuleList: FC<Props> = ({ rules, onClickItem }: Props) => {
   if (!rules.list || !rules.list.length) {
     return null;
   }
-  const list = [{ data: '', index: -1, name: 'Default', selected: !rules.defaultRulesIsDisabled! }].concat(rules.list!);
+  const list = [
+    { data: rules.defaultRules || '', index: -1, name: 'Default', selected: !rules.defaultRulesIsDisabled! },
+  ].concat(rules.list!);
 
   return (
     <div className="rule-list-panel">
       <div className="rule-list">
         {list.map(item => (
           <div key={item.name} data-key={item.name} className="rule-list-item" onClick={() => onClickItem(item)}>
-            <div className="rule-list-item-title">{item.name}</div>
+            <div className="rule-list-item-title" title={item.data}>
+              {item.name}
+            </div>
             <Switch value={item.selected} onChange={() => {}}></Switch>
           </div>
         ))}
