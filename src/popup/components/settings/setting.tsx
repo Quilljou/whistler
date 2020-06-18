@@ -130,7 +130,7 @@ export default observer(() => {
         <div className="form-control">
           <div className="form-label">{i18n('settingIpv4')}</div>
           <div className="form-input">
-            <Clipboard text={store.server ? store.server.ipv4.join('|') : '--'}></Clipboard>
+            {store.server ? store.server.ipv4.map(s => <Clipboard text={s} key={s}></Clipboard>) : '--'}
           </div>
         </div>
       </div>
